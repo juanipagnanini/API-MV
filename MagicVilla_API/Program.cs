@@ -1,3 +1,4 @@
+using MagicVilla_API;
 using MagicVilla_API.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,8 @@ builder.Services.AddControllers().AddNewtonsoftJson();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(MappingConfig));
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -16,6 +19,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
